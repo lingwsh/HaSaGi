@@ -1,7 +1,64 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:web="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
+
+	<display-name>QiuMingCheDui</display-name><!-- 项目名，估计是tomcat内部区分使用，没什么作用 -->
+
+	<!-- <context-param> <param-name>spring.profiles.default</param-name> <param-value>production</param-value> 
+		</context-param> -->
+	<!-- 匹配的优先级：精确匹配>前缀匹配（/*）>后缀匹配（*.action）> servletPath 为空（默认会访问 welcomeResources） 
+		> "/" -->
+	<jsp-config>
+		<jsp-property-group>
+			<description>html encoding</description>
+			<display-name>html encoding</display-name>
+			<url-pattern>*.html</url-pattern>
+			<el-ignored>true</el-ignored>
+			<page-encoding>UTF-8</page-encoding>
+			<scripting-invalid>false</scripting-invalid>
+		</jsp-property-group>
+	</jsp-config>
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>springDispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param><!-- 没配置这个的情况下，默认会去加载 WEB-INF目录下的servlet-name的值-servlet.xml文件 -->
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup><!-- tomcat启动时加载 -->
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springDispatcher</servlet-name>
+		<url-pattern>/</url-pattern><!-- '/'不匹配有后缀名的。如css,jsp，'/*'匹配所有路径 -->
+	</servlet-mapping>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/views/error/500.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/error/404.jsp</location>
+	</error-page>
 </web-app>
