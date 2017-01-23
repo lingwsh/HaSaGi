@@ -11,5 +11,8 @@
 	<!-- 默认的注解映射的支持，org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -->
 	<mvc:annotation-driven/>
 	
+	<context:component-scan base-package="com.qiuming" use-default-filters="true"></context:component-scan>
 	
+	<!-- 静态资源映射 -->
+    <mvc:resources mapping="/static/**" location="/static/" cache-period="31536000"/>
 </beans>
