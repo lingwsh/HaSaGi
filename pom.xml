@@ -254,7 +254,7 @@
 			</plugin>
 		</plugins>
 		<resources>
-			<!-- 移植类文件下的mybatis的xml文件到运行时目录（maven编译时，只会移植resources文件夹下的xml文件到运行时目录） -->
+			<!-- 移植类文件下的mybatis的xml文件到运行时目录（不配置resources，maven编译时，默认移植resources文件夹下的xml文件到运行时目录） -->
 			<resource>
 				<directory>src/main/java</directory>
 				<includes>
