@@ -256,9 +256,16 @@
 		<resources>
 			<!-- 移植类文件下的mybatis的xml文件到运行时目录（maven编译时，只会移植resources文件夹下的xml文件到运行时目录） -->
 			<resource>
-				<directory>src/main/java/com/qiuming/mapping</directory>
+				<directory>src/main/java</directory>
 				<includes>
-					<include>*.xml</include>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**</include>
 				</includes>
 				<filtering>true</filtering>
 			</resource>
