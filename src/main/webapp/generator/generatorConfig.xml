@@ -12,7 +12,7 @@
 		</commentGenerator>
 		<!--数据库链接地址账号密码 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://123.57.244.184/hasagi" userId="jiaozi"
+			connectionURL="jdbc:mysql://123.57.244.184/hasagi" userId="root"
 			password="root@123">
 		</jdbcConnection>
 		<javaTypeResolver>
@@ -25,7 +25,7 @@
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 		<!--生成映射文件存放位置 -->
-		<sqlMapGenerator targetPackage="com.qiuming.dao.mapping"
+		<sqlMapGenerator targetPackage="com.qiuming.mapping"
 			targetProject="gencode">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
