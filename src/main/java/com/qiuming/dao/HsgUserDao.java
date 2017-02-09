@@ -9,7 +9,7 @@ public interface HsgUserDao {
 
     int insertSelective(HsgUser record);
 
-    HsgUser selectByPrimaryKey(Long id);
+    HsgUser get(Long id);
 
     int updateByPrimaryKeySelective(HsgUser record);
 

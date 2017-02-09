@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qiuming.dao.Dao">
+<mapper namespace="com.qiuming.dao.HsgUserDao">
   <resultMap id="BaseResultMap" type="com.qiuming.entity.HsgUser">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
@@ -17,7 +17,7 @@
     id, username, password, nickname, realname, mobile, failed_times, create_time, update_time, 
     is_delete
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="get" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from hsg_user
